@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
     def differ_compare(filename_a, filename_b):
         """
-        returns differences between two files
+        returns differences between two files using Differ.compare
         https://docs.python.org/3/library/difflib.html
         """
 
@@ -26,5 +26,28 @@ if __name__ == '__main__':
         result = list(differ.compare(lines_a, lines_b))
         return result
 
+    def difflib_ndiff(filename_a, filename_b):
+        """
+        returns differences between two files using difflib_ndiff
+        https://docs.python.org/3/library/difflib.html
+        """
+
+        lines_a = []
+        lines_b = []
+
+        with open(filename_a) as file_a:
+            lines_a = file_a.readlines()
+
+        with open(filename_b) as file_b:
+            lines_b = file_b.readlines()
+
+        result = list(difflib.ndiff(lines_a, lines_b))
+        return result
+
+print('differ_compare')
 pprint.pprint(differ_compare('data/a.txt', 'data/b.txt'))
+
+print()
+print('difflib_ndiff')
+pprint.pprint(difflib_ndiff('data/a.txt', 'data/b.txt'))
 
