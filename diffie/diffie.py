@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import difflib
+import pprint
 
 # http://stackoverflow.com/questions/419163/what-does-if-name-main-do
 if __name__ == '__main__':
@@ -26,5 +27,5 @@ if __name__ == '__main__':
 
         return differ_compare
 
-print(differences('data/a.txt', 'data/b.txt'))
+pprint.pprint(differences('data/a.txt', 'data/b.txt'))
 
