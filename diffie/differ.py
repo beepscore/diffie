@@ -12,11 +12,15 @@ if __name__ == '__main__':
         """
 
         lines_a = []
+        lines_b = []
 
         with open(filename_a) as file_a:
             lines_a = file_a.readlines()
 
-        return lines_a
+        with open(filename_b) as file_b:
+            lines_b = file_b.readlines()
+
+        return lines_a, lines_b
 
 print(differences('data/a.txt', 'data/b.txt'))
 
