@@ -7,7 +7,7 @@ import pprint
 if __name__ == '__main__':
 
 
-    def differences(filename_a, filename_b):
+    def differ_compare(filename_a, filename_b):
         """
         returns differences between two files
         https://docs.python.org/3/library/difflib.html
@@ -23,9 +23,8 @@ if __name__ == '__main__':
             lines_b = file_b.readlines()
 
         differ = difflib.Differ()
-        differ_compare = list(differ.compare(lines_a, lines_b))
+        result = list(differ.compare(lines_a, lines_b))
+        return result
 
-        return differ_compare
-
-pprint.pprint(differences('data/a.txt', 'data/b.txt'))
+pprint.pprint(differ_compare('data/a.txt', 'data/b.txt'))
 
