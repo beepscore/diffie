@@ -86,6 +86,33 @@ if __name__ == '__main__':
 
         return results
 
+    def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
+        """
+        returns differences between two files using get_opcodes
+        filters out opcodes whose tag is 'equal'
+        https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
+        """
+
+        lines_a = []
+        lines_b = []
+
+        with open(filename_a) as file_a:
+            a = file_a.read()
+
+        with open(filename_b) as file_b:
+            b = file_b.read()
+
+        results = []
+
+        s = difflib.SequenceMatcher(None, a, b)
+        for tag, i1, i2, j1, j2 in s.get_opcodes():
+            if tag != 'equal':
+                # opcode is not 'equal', e.g. it is something like 'replace', 'delete', 'insert'
+                opcode = '{:7}   a[{}:{}] --> b[{}:{}] {!r:>8} --> {!r}'.format(tag, i1, i2, j1, j2, a[i1:i2], b[j1:j2])
+                results.append(opcode)
+
+        return results
+
 print('differ_compare')
 pprint.pprint(differ_compare('data/a.txt', 'data/b.txt'))
 
@@ -100,3 +127,7 @@ pprint.pprint(difflib_unified_diff('data/a.txt', 'data/b.txt'))
 print()
 print('sequence_matcher_opcodes')
 pprint.pprint(sequence_matcher_opcodes('data/a.txt', 'data/b.txt'))
+
+print()
+print('sequence_matcher_opcodes_no_equal')
+pprint.pprint(sequence_matcher_opcodes_no_equal('data/a.txt', 'data/b.txt'))
