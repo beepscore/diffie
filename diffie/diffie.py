@@ -130,4 +130,4 @@ pprint.pprint(sequence_matcher_opcodes('data/a.txt', 'data/b.txt'))
 
 print()
 print('sequence_matcher_opcodes_no_equal')
-pprint.pprint(sequence_matcher_opcodes_no_equal('data/a.txt', 'data/b.txt'))
+pprint.pprint(sequence_matcher_opcodes_no_equal('data/b.txt', 'data/c.txt'))
