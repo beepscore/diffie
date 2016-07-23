@@ -7,7 +7,7 @@
 
 # Results
 
-    python3 diffie/differ.py
+    python3 diffie/diffie.py
 
 ---
 
