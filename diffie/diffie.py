@@ -113,6 +113,28 @@ if __name__ == '__main__':
 
         return results
 
+    def sequence_matcher_grouped_opcodes(filename_a, filename_b):
+        """
+        returns differences between two files using get_grouped_opcodes
+        https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
+        """
+
+        lines_a = []
+        lines_b = []
+
+        with open(filename_a) as file_a:
+            a = file_a.read()
+
+        with open(filename_b) as file_b:
+            b = file_b.read()
+
+        results = []
+
+        sequenceMatcher = difflib.SequenceMatcher(None, a, b)
+        results = list(sequenceMatcher.get_grouped_opcodes())
+
+        return results
+
 print('differ_compare')
 pprint.pprint(differ_compare('data/a.txt', 'data/b.txt'))
 
@@ -131,3 +153,7 @@ pprint.pprint(sequence_matcher_opcodes('data/a.txt', 'data/b.txt'))
 print()
 print('sequence_matcher_opcodes_no_equal')
 pprint.pprint(sequence_matcher_opcodes_no_equal('data/b.txt', 'data/c.txt'))
+
+print()
+print('sequence_matcher_grouped_opcodes')
+pprint.pprint(sequence_matcher_grouped_opcodes('data/a.txt', 'data/b.txt'))
