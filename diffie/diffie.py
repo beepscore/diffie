@@ -91,6 +91,14 @@ def start_index(opcode_start_index):
     else:
         return opcode_start_index
 
+def end_index(opcode_start_index, string):
+    number_of_characters_after = 15
+    proposed_end = opcode_start_index + number_of_characters_after
+    if proposed_end > len(string) - 1:
+        return len(string) - 1
+    else:
+        return proposed_end
+
 def pieces_string_a(filename_a, filename_b):
     """
     return pieces of text from filename_a

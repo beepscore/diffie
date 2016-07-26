@@ -40,6 +40,15 @@ now you see moog now you don't
         self.assertEqual(diffie.start_index(15), 15)
         self.assertEqual(diffie.start_index(16), 16)
 
+    def test_end_index(self):
+        self.assertEqual(diffie.end_index(0, 'abcdefghijklmnopqrstuvwxyz'), 15)
+        self.assertEqual(diffie.end_index(1, 'abcdefghijklmnopqrstuvwxyz'), 16)
+
+        self.assertEqual(diffie.end_index(9, 'abcdefghijklmnopqrstuvwxyz'), 24)
+        self.assertEqual(diffie.end_index(10, 'abcdefghijklmnopqrstuvwxyz'), 25)
+        self.assertEqual(diffie.end_index(11, 'abcdefghijklmnopqrstuvwxyz'), 25)
+        self.assertEqual(diffie.end_index(12, 'abcdefghijklmnopqrstuvwxyz'), 25)
+
     def test_start_indexes_a(self):
         actual = diffie.opcode_start_indexes_a('data/a.txt', 'data/b.txt')
         self.assertEqual(actual, [7, 21, 22, 31, 38, 43, 48, 76, 114, 117])
