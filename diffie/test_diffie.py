@@ -37,8 +37,9 @@ now you see moog now you don't
     def test_start_index(self):
         self.assertEqual(diffie.start_index(0), 0)
         self.assertEqual(diffie.start_index(14), 0)
-        self.assertEqual(diffie.start_index(15), 15)
-        self.assertEqual(diffie.start_index(16), 16)
+        self.assertEqual(diffie.start_index(15), 0)
+        self.assertEqual(diffie.start_index(16), 1)
+        self.assertEqual(diffie.start_index(17), 2)
 
     def test_end_index(self):
         self.assertEqual(diffie.end_index(0, 'abcdefghijklmnopqrstuvwxyz'), 15)
@@ -59,7 +60,7 @@ now you see moog now you don't
 
     def test_pieces_string_a(self):
         actual = diffie.pieces_string_a('data/a.txt', 'data/b.txt')
-        expected = ['',
+        expected = ['foo bar bas period x y',
                 'r bas period x y z a\nbar dog c',
                 ' bas period x y z a\nbar dog ca',
                 'od x y z a\nbar dog cat fly per',

@@ -86,10 +86,12 @@ def opcode_start_indexes_b(filename_a, filename_b):
     return results
 
 def start_index(opcode_start_index):
-    if (opcode_start_index - 15) < 0:
+    number_of_characters_before = 15
+    proposed_start = opcode_start_index - number_of_characters_before
+    if proposed_start < 0:
         return 0
     else:
-        return opcode_start_index
+        return proposed_start
 
 def end_index(opcode_start_index, string):
     number_of_characters_after = 15
@@ -108,8 +110,9 @@ def pieces_string_a(filename_a, filename_b):
     pieces_a = []
 
     for opcode_start_index in start_indexes:
-        # start = start_index(opcode_start_index)
-        # end = end_index(opcode_start_index, string_a)
-        pieces_a.append(string_a[(opcode_start_index - 15):(opcode_start_index + 15)])
+        start = start_index(opcode_start_index)
+        end = end_index(opcode_start_index, string_a)
+        # print(opcode_start_index, opcode_start_index - 15, opcode_start_index + 15, 'start: ', start, 'end:', end)
+        pieces_a.append(string_a[start:end])
 
     return pieces_a
