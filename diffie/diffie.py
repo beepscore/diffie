@@ -1,159 +1,123 @@
 #!/usr/bin/env python3
 
 import difflib
-import pprint
 
-# http://stackoverflow.com/questions/419163/what-does-if-name-main-do
-if __name__ == '__main__':
+def differ_compare(filename_a, filename_b):
+    """
+    returns differences between two files using Differ.compare
+    https://docs.python.org/3/library/difflib.html
+    """
 
+    lines_a = []
+    lines_b = []
 
-    def differ_compare(filename_a, filename_b):
-        """
-        returns differences between two files using Differ.compare
-        https://docs.python.org/3/library/difflib.html
-        """
+    with open(filename_a) as file_a:
+        lines_a = file_a.readlines()
 
-        lines_a = []
-        lines_b = []
+    with open(filename_b) as file_b:
+        lines_b = file_b.readlines()
 
-        with open(filename_a) as file_a:
-            lines_a = file_a.readlines()
+    differ = difflib.Differ()
+    results = list(differ.compare(lines_a, lines_b))
+    return results
 
-        with open(filename_b) as file_b:
-            lines_b = file_b.readlines()
+def difflib_ndiff(filename_a, filename_b):
+    """
+    returns differences between two files using difflib_ndiff
+    https://docs.python.org/3/library/difflib.html
+    """
 
-        differ = difflib.Differ()
-        results = list(differ.compare(lines_a, lines_b))
-        return results
+    lines_a = []
+    lines_b = []
 
-    def difflib_ndiff(filename_a, filename_b):
-        """
-        returns differences between two files using difflib_ndiff
-        https://docs.python.org/3/library/difflib.html
-        """
+    with open(filename_a) as file_a:
+        lines_a = file_a.readlines()
 
-        lines_a = []
-        lines_b = []
+    with open(filename_b) as file_b:
+        lines_b = file_b.readlines()
 
-        with open(filename_a) as file_a:
-            lines_a = file_a.readlines()
+    results = list(difflib.ndiff(lines_a, lines_b))
+    return results
 
-        with open(filename_b) as file_b:
-            lines_b = file_b.readlines()
+def difflib_unified_diff(filename_a, filename_b):
+    """
+    returns differences between two files using difflib_unified_diff
+    https://docs.python.org/3/library/difflib.html
+    """
 
-        results = list(difflib.ndiff(lines_a, lines_b))
-        return results
+    lines_a = []
+    lines_b = []
 
-    def difflib_unified_diff(filename_a, filename_b):
-        """
-        returns differences between two files using difflib_unified_diff
-        https://docs.python.org/3/library/difflib.html
-        """
+    with open(filename_a) as file_a:
+        lines_a = file_a.readlines()
 
-        lines_a = []
-        lines_b = []
+    with open(filename_b) as file_b:
+        lines_b = file_b.readlines()
 
-        with open(filename_a) as file_a:
-            lines_a = file_a.readlines()
+    results = list(difflib.unified_diff(lines_a, lines_b))
+    return results
 
-        with open(filename_b) as file_b:
-            lines_b = file_b.readlines()
+def sequence_matcher_opcodes(filename_a, filename_b):
+    """
+    returns differences between two files using get_opcodes
+    https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
+    """
 
-        results = list(difflib.unified_diff(lines_a, lines_b))
-        return results
+    with open(filename_a) as file_a:
+        a = file_a.read()
 
-    def sequence_matcher_opcodes(filename_a, filename_b):
-        """
-        returns differences between two files using get_opcodes
-        https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
-        """
+    with open(filename_b) as file_b:
+        b = file_b.read()
 
-        lines_a = []
-        lines_b = []
+    results = []
 
-        with open(filename_a) as file_a:
-            a = file_a.read()
+    s = difflib.SequenceMatcher(None, a, b)
+    for tag, i1, i2, j1, j2 in s.get_opcodes():
+        opcode = '{:7}   a[{}:{}] --> b[{}:{}] {!r:>8} --> {!r}'.format(tag, i1, i2, j1, j2, a[i1:i2], b[j1:j2])
+        results.append(opcode)
 
-        with open(filename_b) as file_b:
-            b = file_b.read()
+    return results
 
-        results = []
+def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
+    """
+    returns differences between two files using get_opcodes
+    filters out opcodes whose tag is 'equal'
+    https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
+    """
 
-        s = difflib.SequenceMatcher(None, a, b)
-        for tag, i1, i2, j1, j2 in s.get_opcodes():
+    with open(filename_a) as file_a:
+        a = file_a.read()
+
+    with open(filename_b) as file_b:
+        b = file_b.read()
+
+    results = []
+
+    s = difflib.SequenceMatcher(None, a, b)
+    for tag, i1, i2, j1, j2 in s.get_opcodes():
+        if tag != 'equal':
+            # opcode is not 'equal', e.g. it is something like 'replace', 'delete', 'insert'
             opcode = '{:7}   a[{}:{}] --> b[{}:{}] {!r:>8} --> {!r}'.format(tag, i1, i2, j1, j2, a[i1:i2], b[j1:j2])
             results.append(opcode)
 
-        return results
+    return results
 
-    def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
-        """
-        returns differences between two files using get_opcodes
-        filters out opcodes whose tag is 'equal'
-        https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
-        """
+def sequence_matcher_grouped_opcodes(filename_a, filename_b):
+    """
+    returns differences between two files using get_grouped_opcodes
+    https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
+    """
 
-        lines_a = []
-        lines_b = []
+    with open(filename_a) as file_a:
+        a = file_a.read()
 
-        with open(filename_a) as file_a:
-            a = file_a.read()
+    with open(filename_b) as file_b:
+        b = file_b.read()
 
-        with open(filename_b) as file_b:
-            b = file_b.read()
+    results = []
 
-        results = []
+    sequenceMatcher = difflib.SequenceMatcher(None, a, b)
+    results = list(sequenceMatcher.get_grouped_opcodes())
 
-        s = difflib.SequenceMatcher(None, a, b)
-        for tag, i1, i2, j1, j2 in s.get_opcodes():
-            if tag != 'equal':
-                # opcode is not 'equal', e.g. it is something like 'replace', 'delete', 'insert'
-                opcode = '{:7}   a[{}:{}] --> b[{}:{}] {!r:>8} --> {!r}'.format(tag, i1, i2, j1, j2, a[i1:i2], b[j1:j2])
-                results.append(opcode)
+    return results
 
-        return results
-
-    def sequence_matcher_grouped_opcodes(filename_a, filename_b):
-        """
-        returns differences between two files using get_grouped_opcodes
-        https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
-        """
-
-        lines_a = []
-        lines_b = []
-
-        with open(filename_a) as file_a:
-            a = file_a.read()
-
-        with open(filename_b) as file_b:
-            b = file_b.read()
-
-        results = []
-
-        sequenceMatcher = difflib.SequenceMatcher(None, a, b)
-        results = list(sequenceMatcher.get_grouped_opcodes())
-
-        return results
-
-print('differ_compare')
-pprint.pprint(differ_compare('data/a.txt', 'data/b.txt'))
-
-print()
-print('difflib_ndiff')
-pprint.pprint(difflib_ndiff('data/a.txt', 'data/b.txt'))
-
-print()
-print('difflib_unified_diff')
-pprint.pprint(difflib_unified_diff('data/a.txt', 'data/b.txt'))
-
-print()
-print('sequence_matcher_opcodes')
-pprint.pprint(sequence_matcher_opcodes('data/a.txt', 'data/b.txt'))
-
-print()
-print('sequence_matcher_opcodes_no_equal')
-pprint.pprint(sequence_matcher_opcodes_no_equal('data/b.txt', 'data/c.txt'))
-
-print()
-print('sequence_matcher_grouped_opcodes')
-pprint.pprint(sequence_matcher_grouped_opcodes('data/a.txt', 'data/b.txt'))
