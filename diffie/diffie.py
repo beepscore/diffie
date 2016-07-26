@@ -85,11 +85,11 @@ def start_indexes_b(filename_a, filename_b):
             results.append(j1)
     return results
 
-def start_index(an_index):
-    if (an_index - 15) < 0:
+def start_index(index):
+    if (index - 15) < 0:
         return 0
     else:
-        return an_index
+        return index
 
 def pieces_string_a(filename_a, filename_b):
     """

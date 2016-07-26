@@ -34,6 +34,12 @@ now you see moog now you don't
                 "insert    a[115:115] --> b[119:120]       '' --> 'e'"]
         self.assertEqual(actual, expected)
 
+    def test_start_index(self):
+        self.assertEqual(diffie.start_index(0), 0)
+        self.assertEqual(diffie.start_index(14), 0)
+        self.assertEqual(diffie.start_index(15), 15)
+        self.assertEqual(diffie.start_index(16), 16)
+
     def test_start_indexes_a(self):
         actual = diffie.start_indexes_a('data/a.txt', 'data/b.txt')
         self.assertEqual(actual, [7, 21, 22, 31, 38, 43, 48, 76, 114, 117])
