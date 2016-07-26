@@ -24,8 +24,15 @@ now you see moog now you don't
         self.assertEqual(actual, expected)
 
     def test_sequence_matcher_opcodes_no_equal(self):
-        actual = diffie.sequence_matcher_opcodes_no_equal('data/a.txt', 'data/b.txt')
-        self.assertEqual(len(actual), 10)
+        actual = diffie.sequence_matcher_opcodes_no_equal('data/b.txt', 'data/c.txt')
+        self.assertEqual(len(actual), 6)
+        expected = ["insert    a[7:7] --> b[7:8]       '' --> ' '",
+                "replace   a[8:9] --> b[9:10]      'i' --> 'e'",
+                "replace   a[53:55] --> b[54:59]     ' c' --> 'eesee'",
+                "replace   a[81:82] --> b[85:86]      's' --> 'c'",
+                "replace   a[112:113] --> b[116:117]      'o' --> 'u'",
+                "insert    a[115:115] --> b[119:120]       '' --> 'e'"]
+        self.assertEqual(actual, expected)
 
     def test_start_indexes_a(self):
         actual = diffie.start_indexes_a('data/a.txt', 'data/b.txt')

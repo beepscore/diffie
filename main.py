@@ -9,6 +9,3 @@ import pprint
 print('difflib_ndiff')
 pprint.pprint(difflib_ndiff('data/a.txt', 'data/b.txt'))
 
-print()
-print('sequence_matcher_opcodes_no_equal')
-pprint.pprint(sequence_matcher_opcodes_no_equal('data/b.txt', 'data/c.txt'))
