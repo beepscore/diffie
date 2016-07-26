@@ -20,5 +20,9 @@ class TestDiffie(unittest.TestCase):
         actual = diffie.start_indexes_a('data/a.txt', 'data/b.txt')
         self.assertEqual(actual, [7, 21, 22, 31, 38, 43, 48, 76, 114, 117])
 
+    def test_start_indexes_b(self):
+        actual = diffie.start_indexes_b('data/a.txt', 'data/b.txt')
+        self.assertEqual(actual, [7, 24, 27, 34, 37, 44, 46, 76, 110, 114])
+
 if __name__ == "__main__":
     unittest.main()

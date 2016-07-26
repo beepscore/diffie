@@ -62,3 +62,20 @@ def start_indexes_a(filename_a, filename_b):
             results.append(i1)
     return results
 
+def start_indexes_b(filename_a, filename_b):
+    """
+    returns indices from string_b opcode
+    """
+    with open(filename_a) as file_a:
+        a = file_a.read()
+
+    with open(filename_b) as file_b:
+        b = file_b.read()
+
+    results = []
+
+    sequenceMatcher = difflib.SequenceMatcher(None, a, b)
+    for tag, i1, i2, j1, j2 in sequenceMatcher.get_opcodes():
+        if tag != 'equal':
+            results.append(j1)
+    return results
