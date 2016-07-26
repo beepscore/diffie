@@ -2,25 +2,6 @@
 
 import difflib
 
-def differ_compare(filename_a, filename_b):
-    """
-    returns differences between two files using Differ.compare
-    https://docs.python.org/3/library/difflib.html
-    """
-
-    lines_a = []
-    lines_b = []
-
-    with open(filename_a) as file_a:
-        lines_a = file_a.readlines()
-
-    with open(filename_b) as file_b:
-        lines_b = file_b.readlines()
-
-    differ = difflib.Differ()
-    results = list(differ.compare(lines_a, lines_b))
-    return results
-
 def difflib_ndiff(filename_a, filename_b):
     """
     returns differences between two files using difflib_ndiff

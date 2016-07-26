@@ -6,10 +6,6 @@ import pprint
 # http://stackoverflow.com/questions/419163/what-does-if-name-main-do
 #if __name__ == '__main__':
 
-print('differ_compare')
-pprint.pprint(differ_compare('data/a.txt', 'data/b.txt'))
-
-print()
 print('difflib_ndiff')
 pprint.pprint(difflib_ndiff('data/a.txt', 'data/b.txt'))
 
