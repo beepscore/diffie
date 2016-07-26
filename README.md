@@ -10,7 +10,7 @@
 ## run main.py
     cd <project root directory>
     source venv/bin/activate
-    python3 diffie/diffie.py
+    python3 diffie/main.py
 
 ## run unit tests
     cd <project root directory>
