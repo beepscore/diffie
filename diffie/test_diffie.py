@@ -11,9 +11,9 @@ class TestDiffie(unittest.TestCase):
     def setUp(self):
         pass
 
-    def test_sequence_matcher_grouped_opcodes(self):
-        actual = diffie.sequence_matcher_grouped_opcodes('data/a.txt', 'data/b.txt')
-        self.assertEqual(len(actual), 5)
+    def test_sequence_matcher_opcodes_no_equal(self):
+        actual = diffie.sequence_matcher_opcodes_no_equal('data/a.txt', 'data/b.txt')
+        self.assertEqual(len(actual), 10)
 
 if __name__ == "__main__":
     unittest.main()

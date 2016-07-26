@@ -24,7 +24,3 @@ pprint.pprint(sequence_matcher_opcodes('data/a.txt', 'data/b.txt'))
 print()
 print('sequence_matcher_opcodes_no_equal')
 pprint.pprint(sequence_matcher_opcodes_no_equal('data/b.txt', 'data/c.txt'))
-
-print()
-print('sequence_matcher_grouped_opcodes')
-pprint.pprint(sequence_matcher_grouped_opcodes('data/a.txt', 'data/b.txt'))

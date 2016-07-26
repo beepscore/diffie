@@ -102,22 +102,3 @@ def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
 
     return results
 
-def sequence_matcher_grouped_opcodes(filename_a, filename_b):
-    """
-    returns differences between two files using get_grouped_opcodes
-    https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.get_grouped_opcodes
-    """
-
-    with open(filename_a) as file_a:
-        a = file_a.read()
-
-    with open(filename_b) as file_b:
-        b = file_b.read()
-
-    results = []
-
-    sequenceMatcher = difflib.SequenceMatcher(None, a, b)
-    results = list(sequenceMatcher.get_grouped_opcodes())
-
-    return results
-
