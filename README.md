@@ -7,7 +7,15 @@
 
 # Results
 
+## run main.py
+    cd <project root directory>
+    source venv/bin/activate
     python3 diffie/diffie.py
+
+## run unit tests
+    cd <project root directory>
+    source venv/bin/activate
+    python3 diffie/test_diffie.py
 
 ---
 
