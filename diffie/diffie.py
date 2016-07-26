@@ -150,12 +150,8 @@ def pieces(filename_a, filename_b):
         # print(index, index - 15, index + 15, 'start: ', start, 'end:', end)
         pieces_a_b.append(string_a[start:end_a])
         pieces_a_b.append(string_b[start:end_b])
-
-    # interweave the two lists. Probably Python has a shorter way to do this.
-    # http://stackoverflow.com/questions/522563/accessing-the-index-in-python-for-loops#522578
-    # for index, piece_a in enumerate(pieces_a):
-    #     pieces_a_b.append(piece_a)
-    #     pieces_a_b.append(pieces_b(index))
+        # add separator to make it easier to visually scan pairs
+        pieces_a_b.append('')
 
     return pieces_a_b
 
