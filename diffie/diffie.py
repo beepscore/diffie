@@ -49,7 +49,7 @@ def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
 
     return results
 
-def start_indexes_a(filename_a, filename_b):
+def opcode_start_indexes_a(filename_a, filename_b):
     """
     returns indices from string_a opcode
     """
@@ -67,7 +67,7 @@ def start_indexes_a(filename_a, filename_b):
             results.append(i1)
     return results
 
-def start_indexes_b(filename_a, filename_b):
+def opcode_start_indexes_b(filename_a, filename_b):
     """
     returns indices from string_b opcode
     """
@@ -85,23 +85,23 @@ def start_indexes_b(filename_a, filename_b):
             results.append(j1)
     return results
 
-def start_index(index):
-    if (index - 15) < 0:
+def start_index(opcode_start_index):
+    if (opcode_start_index - 15) < 0:
         return 0
     else:
-        return index
+        return opcode_start_index
 
 def pieces_string_a(filename_a, filename_b):
     """
     return pieces of text from filename_a
     """
     string_a = string_from_file(filename_a)
-    start_indexes = start_indexes_a(filename_a, filename_b)
+    start_indexes = opcode_start_indexes_a(filename_a, filename_b)
     pieces_a = []
 
-    for index in start_indexes:
-#        start = start_index(index)
-#        end = end_index(index, string_a)
-        pieces_a.append(string_a[index-15:index+15])
+    for opcode_start_index in start_indexes:
+        # start = start_index(opcode_start_index)
+        # end = end_index(opcode_start_index, string_a)
+        pieces_a.append(string_a[(opcode_start_index - 15):(opcode_start_index + 15)])
 
     return pieces_a
