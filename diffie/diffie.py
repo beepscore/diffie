@@ -2,6 +2,11 @@
 
 import difflib
 
+def string_from_file(filename):
+    with open(filename) as a_file:
+        string = a_file.read()
+    return string
+
 def difflib_ndiff(filename_a, filename_b):
     """
     returns differences between two files using difflib_ndiff
@@ -79,3 +84,24 @@ def start_indexes_b(filename_a, filename_b):
         if tag != 'equal':
             results.append(j1)
     return results
+
+def start_index(an_index):
+    if (an_index - 15) < 0:
+        return 0
+    else:
+        return an_index
+
+def pieces_string_a(filename_a, filename_b):
+    """
+    return pieces of text from filename_a
+    """
+    string_a = string_from_file(filename_a)
+    start_indexes = start_indexes_a(filename_a, filename_b)
+    pieces_a = []
+
+    for index in start_indexes:
+#        start = start_index(index)
+#        end = end_index(index, string_a)
+        pieces_a.append(string_a[index-15:index+15])
+
+    return pieces_a
