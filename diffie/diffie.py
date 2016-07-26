@@ -116,3 +116,18 @@ def pieces_string_a(filename_a, filename_b):
         pieces_a.append(string_a[start:end])
 
     return pieces_a
+
+def pieces_string_b(filename_a, filename_b):
+    """
+    return pieces of text from filename_b
+    """
+    string_b = string_from_file(filename_b)
+    start_indexes = opcode_start_indexes_b(filename_a, filename_b)
+    pieces_b = []
+
+    for opcode_start_index in start_indexes:
+        start = start_index(opcode_start_index)
+        end = end_index(opcode_start_index, string_b)
+        pieces_b.append(string_b[start:end])
+
+    return pieces_b
