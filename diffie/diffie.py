@@ -35,12 +35,30 @@ def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
 
     results = []
 
-    s = difflib.SequenceMatcher(None, a, b)
-    for tag, i1, i2, j1, j2 in s.get_opcodes():
+    sequenceMatcher = difflib.SequenceMatcher(None, a, b)
+    for tag, i1, i2, j1, j2 in sequenceMatcher.get_opcodes():
         if tag != 'equal':
             # opcode is not 'equal', e.g. it is something like 'replace', 'delete', 'insert'
             opcode = '{:7}   a[{}:{}] --> b[{}:{}] {!r:>8} --> {!r}'.format(tag, i1, i2, j1, j2, a[i1:i2], b[j1:j2])
             results.append(opcode)
 
+    return results
+
+def start_indexes_a(filename_a, filename_b):
+    """
+    returns indices from string_a opcode
+    """
+    with open(filename_a) as file_a:
+        a = file_a.read()
+
+    with open(filename_b) as file_b:
+        b = file_b.read()
+
+    results = []
+
+    sequenceMatcher = difflib.SequenceMatcher(None, a, b)
+    for tag, i1, i2, j1, j2 in sequenceMatcher.get_opcodes():
+        if tag != 'equal':
+            results.append(i1)
     return results
 
