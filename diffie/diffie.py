@@ -131,3 +131,31 @@ def pieces_string_b(filename_a, filename_b):
         pieces_b.append(string_b[start:end])
 
     return pieces_b
+
+def pieces(filename_a, filename_b):
+    """
+    return differing pieces of text from filename_a and filename_b
+    """
+    string_a = string_from_file(filename_a)
+    string_b = string_from_file(filename_b)
+    start_indexes_a = opcode_start_indexes_a(filename_a, filename_b)
+    pieces_a = []
+    pieces_b = []
+    pieces_a_b = []
+
+    for index in start_indexes_a:
+        start = start_index(index)
+        end_a = end_index(index, string_a)
+        end_b = end_index(index, string_b)
+        # print(index, index - 15, index + 15, 'start: ', start, 'end:', end)
+        pieces_a_b.append(string_a[start:end_a])
+        pieces_a_b.append(string_b[start:end_b])
+
+    # interweave the two lists. Probably Python has a shorter way to do this.
+    # http://stackoverflow.com/questions/522563/accessing-the-index-in-python-for-loops#522578
+    # for index, piece_a in enumerate(pieces_a):
+    #     pieces_a_b.append(piece_a)
+    #     pieces_a_b.append(pieces_b(index))
+
+    return pieces_a_b
+

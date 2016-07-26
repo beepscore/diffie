@@ -86,5 +86,30 @@ now you see moog now you don't
                 "ow you see floop now you don't"]
         self.assertEqual(actual, expected)
 
+    def test_pieces(self):
+        actual = diffie.pieces('data/a.txt', 'data/b.txt')
+        print(actual)
+        expected = ['foo bar bas period x y',
+                'foo barbie bas period ',
+                'r bas period x y z a\nbar dog c',
+                'rbie bas period x z y a\nbar ca',
+                ' bas period x y z a\nbar dog ca',
+                'bie bas period x z y a\nbar cat',
+                'od x y z a\nbar dog cat fly per',
+                'eriod x z y a\nbar catty fly co',
+                'z a\nbar dog cat fly period a b',
+                ' z y a\nbar catty fly colon a b',
+                'ar dog cat fly period a b c d3',
+                'a\nbar catty fly colon a b c d3',
+                'g cat fly period a b c d3\nfoo\n',
+                ' catty fly colon a b c d3\nfoo\n',
+                'o\nfud spaghetti wif cheese\ngin',
+                'o\nfud spaghetti cheese\nging fu',
+                'ab\nnow you see moog now you do',
+                "ow you see floop now you don't",
+                "now you see moog now you don't",
+                "you see floop now you don't"]
+        self.assertEqual(actual, expected)
+
 if __name__ == "__main__":
     unittest.main()
