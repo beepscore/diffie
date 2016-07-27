@@ -10,4 +10,8 @@ print('difflib_ndiff')
 pprint.pprint(difflib_ndiff('data/a.txt', 'data/b.txt'))
 
 print('pieces')
-pprint.pprint(pieces('data/a.txt', 'data/b.txt'))
+pieces = pieces('data/a.txt', 'data/b.txt')
+for pair in pieces:
+    print(pair[0])
+    print(pair[1])
+    print()
