@@ -50,74 +50,54 @@ now you see moog now you don't
         self.assertEqual(diffie.end_index(11, 'abcdefghijklmnopqrstuvwxyz'), 25)
         self.assertEqual(diffie.end_index(12, 'abcdefghijklmnopqrstuvwxyz'), 25)
 
-    def test_opcode_start_indexes_a(self):
-        actual = diffie.opcode_start_indexes_a('data/a.txt', 'data/b.txt')
-        self.assertEqual(actual, [7, 21, 22, 31, 38, 43, 48, 76, 114, 117])
+    def test_opcode_indexes_a(self):
+        actual = diffie.opcode_indexes_a('data/a.txt', 'data/b.txt')
+        self.assertEqual(actual, [(7, 7), (21, 21), (22, 24), (31, 35), (38, 38), (43, 47), (48, 49), (76, 80), (114, 115), (117, 118)])
 
-    def test_opcode_start_indexes_b(self):
-        actual = diffie.opcode_start_indexes_b('data/a.txt', 'data/b.txt')
-        self.assertEqual(actual, [7, 24, 27, 34, 37, 44, 46, 76, 110, 114])
+    def test_opcode_indexes_b(self):
+        actual = diffie.opcode_indexes_b('data/a.txt', 'data/b.txt')
+        self.assertEqual(actual, [(7, 10), (24, 26), (27, 27), (34, 34), (37, 39), (44, 45), (46, 49), (76, 76), (110, 112), (114, 115)])
 
     def test_pieces_string_a(self):
         actual = diffie.pieces_string_a('data/a.txt', 'data/b.txt')
         expected = ['foo bar bas period x y',
                 'r bas period x y z a\nbar dog c',
-                ' bas period x y z a\nbar dog ca',
-                'od x y z a\nbar dog cat fly per',
+                ' bas period x y z a\nbar dog cat ',
+                'od x y z a\nbar dog cat fly period ',
                 'z a\nbar dog cat fly period a b',
-                'ar dog cat fly period a b c d3',
-                'g cat fly period a b c d3\nfoo\n',
-                'o\nfud spaghetti wif cheese\ngin',
-                'ab\nnow you see moog now you do',
+                'ar dog cat fly period a b c d3\nfoo',
+                'g cat fly period a b c d3\nfoo\nf',
+                'o\nfud spaghetti wif cheese\nging fu',
+                'ab\nnow you see moog now you don',
                 "now you see moog now you don't"]
         self.assertEqual(actual, expected)
 
     def test_pieces_string_b(self):
         actual = diffie.pieces_string_b('data/a.txt', 'data/b.txt')
-        expected = ['foo barbie bas period ',
-                'e bas period x z y a\nbar catty',
+        expected = ['foo barbie bas period x z',
+                'e bas period x z y a\nbar catty f',
                 'as period x z y a\nbar catty fl',
                 'od x z y a\nbar catty fly colon',
-                'x z y a\nbar catty fly colon a ',
-                '\nbar catty fly colon a b c d3\n',
-                'ar catty fly colon a b c d3\nfo',
+                'x z y a\nbar catty fly colon a b ',
+                '\nbar catty fly colon a b c d3\nf',
+                'ar catty fly colon a b c d3\nfoo\nf',
                 'o\nfud spaghetti cheese\nging fu',
-                'ab\nnow you see floop now you d',
+                'ab\nnow you see floop now you don',
                 "ow you see floop now you don't"]
         self.assertEqual(actual, expected)
 
     def test_pieces(self):
         actual = diffie.pieces('data/a.txt', 'data/b.txt')
-        expected = ['foo bar bas period x y',
-                'foo barbie bas period ',
-                '',
-                'r bas period x y z a\nbar dog c',
-                'rbie bas period x z y a\nbar ca',
-                '',
-                ' bas period x y z a\nbar dog ca',
-                'bie bas period x z y a\nbar cat',
-                '',
-                'od x y z a\nbar dog cat fly per',
-                'eriod x z y a\nbar catty fly co',
-                '',
-                'z a\nbar dog cat fly period a b',
-                ' z y a\nbar catty fly colon a b',
-                '',
-                'ar dog cat fly period a b c d3',
-                'a\nbar catty fly colon a b c d3',
-                '',
-                'g cat fly period a b c d3\nfoo\n',
-                ' catty fly colon a b c d3\nfoo\n',
-                '',
-                'o\nfud spaghetti wif cheese\ngin',
-                'o\nfud spaghetti cheese\nging fu',
-                '',
-                'ab\nnow you see moog now you do',
-                "ow you see floop now you don't",
-                '',
-                "now you see moog now you don't",
-                "you see floop now you don't",
-                '']
+        expected = [('foo bar bas period x y', 'foo barbie bas period x z'),
+                ('r bas period x y z a\nbar dog c', 'e bas period x z y a\nbar catty f'),
+                (' bas period x y z a\nbar dog cat ', 'as period x z y a\nbar catty fl'),
+                ('od x y z a\nbar dog cat fly period ', 'od x z y a\nbar catty fly colon'),
+                ('z a\nbar dog cat fly period a b', 'x z y a\nbar catty fly colon a b '),
+                ('ar dog cat fly period a b c d3\nfoo', '\nbar catty fly colon a b c d3\nf'),
+                ('g cat fly period a b c d3\nfoo\nf', 'ar catty fly colon a b c d3\nfoo\nf'),
+                ('o\nfud spaghetti wif cheese\nging fu', 'o\nfud spaghetti cheese\nging fu'),
+                ('ab\nnow you see moog now you don', 'ab\nnow you see floop now you don'),
+                ("now you see moog now you don't", "ow you see floop now you don't")]
         self.assertEqual(actual, expected)
 
 if __name__ == "__main__":

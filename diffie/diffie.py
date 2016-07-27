@@ -49,9 +49,9 @@ def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
 
     return results
 
-def opcode_start_indexes_a(filename_a, filename_b):
+def opcode_indexes_a(filename_a, filename_b):
     """
-    returns indices from string_a opcode
+    returns start and end indexes from string_a opcode
     """
     with open(filename_a) as file_a:
         a = file_a.read()
@@ -64,12 +64,12 @@ def opcode_start_indexes_a(filename_a, filename_b):
     sequenceMatcher = difflib.SequenceMatcher(None, a, b)
     for tag, i1, i2, j1, j2 in sequenceMatcher.get_opcodes():
         if tag != 'equal':
-            results.append(i1)
+            results.append((i1, i2))
     return results
 
-def opcode_start_indexes_b(filename_a, filename_b):
+def opcode_indexes_b(filename_a, filename_b):
     """
-    returns indices from string_b opcode
+    returns start and end indexes from string_b opcode
     """
     with open(filename_a) as file_a:
         a = file_a.read()
@@ -82,7 +82,7 @@ def opcode_start_indexes_b(filename_a, filename_b):
     sequenceMatcher = difflib.SequenceMatcher(None, a, b)
     for tag, i1, i2, j1, j2 in sequenceMatcher.get_opcodes():
         if tag != 'equal':
-            results.append(j1)
+            results.append((j1, j2))
     return results
 
 def start_index(opcode_start_index):
@@ -106,13 +106,12 @@ def pieces_string_a(filename_a, filename_b):
     return pieces of text from filename_a
     """
     string_a = string_from_file(filename_a)
-    start_indexes = opcode_start_indexes_a(filename_a, filename_b)
+    indexes = opcode_indexes_a(filename_a, filename_b)
     pieces_a = []
 
-    for opcode_start_index in start_indexes:
-        start = start_index(opcode_start_index)
-        end = end_index(opcode_start_index, string_a)
-        # print(opcode_start_index, opcode_start_index - 15, opcode_start_index + 15, 'start: ', start, 'end:', end)
+    for opcode_indexes in indexes:
+        start = start_index(opcode_indexes[0])
+        end = end_index(opcode_indexes[1], string_a)
         pieces_a.append(string_a[start:end])
 
     return pieces_a
@@ -122,12 +121,12 @@ def pieces_string_b(filename_a, filename_b):
     return pieces of text from filename_b
     """
     string_b = string_from_file(filename_b)
-    start_indexes = opcode_start_indexes_b(filename_a, filename_b)
+    indexes = opcode_indexes_b(filename_a, filename_b)
     pieces_b = []
 
-    for opcode_start_index in start_indexes:
-        start = start_index(opcode_start_index)
-        end = end_index(opcode_start_index, string_b)
+    for opcode_indexes in indexes:
+        start = start_index(opcode_indexes[0])
+        end = end_index(opcode_indexes[1], string_b)
         pieces_b.append(string_b[start:end])
 
     return pieces_b
@@ -136,22 +135,12 @@ def pieces(filename_a, filename_b):
     """
     return differing pieces of text from filename_a and filename_b
     """
-    string_a = string_from_file(filename_a)
-    string_b = string_from_file(filename_b)
-    start_indexes_a = opcode_start_indexes_a(filename_a, filename_b)
-    pieces_a = []
-    pieces_b = []
+    pieces_a = pieces_string_a(filename_a, filename_b)
+    pieces_b = pieces_string_b(filename_a, filename_b)
     pieces_a_b = []
 
-    for index in start_indexes_a:
-        start = start_index(index)
-        end_a = end_index(index, string_a)
-        end_b = end_index(index, string_b)
-        # print(index, index - 15, index + 15, 'start: ', start, 'end:', end)
-        pieces_a_b.append(string_a[start:end_a])
-        pieces_a_b.append(string_b[start:end_b])
-        # add separator to make it easier to visually scan pairs
-        pieces_a_b.append('')
+    for index, piece_a in enumerate(pieces_a):
+        pieces_a_b.append((piece_a, pieces_b[index]))
 
     return pieces_a_b
 
