@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import difflib
+import os
 
 from diffie import file_writer
 
@@ -146,6 +147,20 @@ def pieces(filename_a, filename_b):
 
     return pieces_a_b
 
+def pieces_lines(filename_a, filename_b):
+    """
+    return differing pieces of text from filename_a and filename_b
+    """
+    pieces_a = pieces_string_a(filename_a, filename_b)
+    pieces_b = pieces_string_b(filename_a, filename_b)
+    pieces_a_b = ""
+
+    for index, piece_a in enumerate(pieces_a):
+        pieces_a_b += piece_a + os.linesep
+        pieces_a_b += pieces_b[index] + os.linesep
+
+    return pieces_a_b
+
 def get_pieces_and_write(filename_a, filename_b, out_dir, out_file):
     pieces_a_b = pieces(filename_a, filename_b)
     # convert list to string
@@ -153,3 +168,7 @@ def get_pieces_and_write(filename_a, filename_b, out_dir, out_file):
 
     file_writer.FileWriter.create_file(out_dir, out_file, pieces_a_b_string)
 
+def get_pieces_lines_and_write(filename_a, filename_b, out_dir, out_file):
+    pieces_a_b_string = pieces_lines(filename_a, filename_b)
+
+    file_writer.FileWriter.create_file(out_dir, out_file, pieces_a_b_string)
