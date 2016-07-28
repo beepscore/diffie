@@ -14,5 +14,5 @@ python3 --version
 # python3 -m unittest discover confused test_arg_reader.
 # if using -m then don't append extension .py
 # http://stackoverflow.com/questions/11536764/attempted-relative-import-in-non-package-even-with-init-py
-python3 -m tests.test_diffie
+python3 -m tests.test_diffie tests.test_file_writer
 

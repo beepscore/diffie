@@ -29,7 +29,7 @@ Works on OS X. On Windows may work with Cygwin, I don't know.
 ### python command
 
     cd <project root directory>
-    python3 -m unittest tests.test_diffie
+    python3 -m unittest tests.test_diffie tests.test_file_writer
 
 ---
 
