@@ -2,6 +2,8 @@
 
 import difflib
 
+from diffie import file_writer
+
 def string_from_file(filename):
     with open(filename) as a_file:
         string = a_file.read()
@@ -143,4 +145,11 @@ def pieces(filename_a, filename_b):
         pieces_a_b.append((piece_a, pieces_b[index]))
 
     return pieces_a_b
+
+def get_pieces_and_write(filename_a, filename_b, out_dir, out_file):
+    pieces_a_b = pieces(filename_a, filename_b)
+    # convert list to string
+    pieces_a_b_string = "({})".format(pieces_a_b)
+
+    file_writer.FileWriter.create_file(out_dir, out_file, pieces_a_b_string)
 

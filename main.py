@@ -15,3 +15,5 @@ for pair in pieces:
     print(pair[0])
     print(pair[1])
     print()
+
+get_pieces_and_write('data/a.txt', 'data/b.txt', 'data/output', 'results.txt')
