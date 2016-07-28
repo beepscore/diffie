@@ -12,10 +12,24 @@
     source venv/bin/activate
     python3 diffie/main.py
 
-## run unit tests
+
+
+## Unit tests
+To run tests, open terminal shell.  
+cd to project directory. Run tests via python command or bash script.
+
+### Bash script
+Runs all test modules.  
+Works on OS X. On Windows may work with Cygwin, I don't know.
+
     cd <project root directory>
     source venv/bin/activate
-    python3 diffie/test_diffie.py
+    ./bin/run_tests
+
+### python command
+
+    cd <project root directory>
+    python3 -m unittest tests.test_diffie
 
 ---
 

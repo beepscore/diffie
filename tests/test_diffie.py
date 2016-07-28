@@ -3,8 +3,8 @@
 import unittest
 import pprint
 
-# TODO: Consider move test file to a directory tests. Need to understand how Python import works!
-import diffie
+# relative import didn't work
+from diffie import diffie
 
 
 class TestDiffie(unittest.TestCase):
