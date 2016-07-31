@@ -43,8 +43,8 @@ def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
 
     results = []
 
-    sequenceMatcher = difflib.SequenceMatcher(None, a, b)
-    for tag, i1, i2, j1, j2 in sequenceMatcher.get_opcodes():
+    sequence_matcher = difflib.SequenceMatcher(None, a, b)
+    for tag, i1, i2, j1, j2 in sequence_matcher.get_opcodes():
         if tag != 'equal':
             # opcode is not 'equal', e.g. it is something like 'replace', 'delete', 'insert'
             opcode = '{:7}   a[{}:{}] --> b[{}:{}] {!r:>8} --> {!r}'.format(tag, i1, i2, j1, j2, a[i1:i2], b[j1:j2])
@@ -65,8 +65,8 @@ def opcode_indexes_a(filename_a, filename_b):
 
     results = []
 
-    sequenceMatcher = difflib.SequenceMatcher(None, a, b)
-    for tag, i1, i2, j1, j2 in sequenceMatcher.get_opcodes():
+    sequence_matcher = difflib.SequenceMatcher(None, a, b)
+    for tag, i1, i2, j1, j2 in sequence_matcher.get_opcodes():
         if tag != 'equal':
             results.append((i1, i2))
     return results
@@ -84,8 +84,8 @@ def opcode_indexes_b(filename_a, filename_b):
 
     results = []
 
-    sequenceMatcher = difflib.SequenceMatcher(None, a, b)
-    for tag, i1, i2, j1, j2 in sequenceMatcher.get_opcodes():
+    sequence_matcher = difflib.SequenceMatcher(None, a, b)
+    for tag, i1, i2, j1, j2 in sequence_matcher.get_opcodes():
         if tag != 'equal':
             results.append((j1, j2))
     return results
