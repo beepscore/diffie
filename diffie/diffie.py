@@ -5,10 +5,12 @@ import os
 
 from diffie import file_writer
 
+
 def string_from_file(filename):
     with open(filename) as a_file:
         string = a_file.read()
     return string
+
 
 def difflib_ndiff(filename_a, filename_b):
     """
@@ -27,6 +29,7 @@ def difflib_ndiff(filename_a, filename_b):
 
     results = list(difflib.ndiff(lines_a, lines_b))
     return results
+
 
 def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
     """
@@ -52,6 +55,7 @@ def sequence_matcher_opcodes_no_equal(filename_a, filename_b):
 
     return results
 
+
 def opcode_indexes_a(filename_a, filename_b):
     """
     returns start and end indexes from string_a opcode
@@ -69,6 +73,7 @@ def opcode_indexes_a(filename_a, filename_b):
         if tag != 'equal':
             results.append((i1, i2))
     return results
+
 
 def opcode_indexes_b(filename_a, filename_b):
     """
@@ -88,6 +93,7 @@ def opcode_indexes_b(filename_a, filename_b):
             results.append((j1, j2))
     return results
 
+
 def start_index(opcode_start_index):
     number_of_characters_before = 15
     proposed_start = opcode_start_index - number_of_characters_before
@@ -96,6 +102,7 @@ def start_index(opcode_start_index):
     else:
         return proposed_start
 
+
 def end_index(opcode_start_index, string):
     number_of_characters_after = 15
     proposed_end = opcode_start_index + number_of_characters_after
@@ -103,6 +110,7 @@ def end_index(opcode_start_index, string):
         return len(string) - 1
     else:
         return proposed_end
+
 
 def pieces_string_a(filename_a, filename_b):
     """
@@ -119,6 +127,7 @@ def pieces_string_a(filename_a, filename_b):
 
     return pieces_a
 
+
 def pieces_string_b(filename_a, filename_b):
     """
     return pieces of text from filename_b
@@ -134,6 +143,7 @@ def pieces_string_b(filename_a, filename_b):
 
     return pieces_b
 
+
 def pieces(filename_a, filename_b):
     """
     return differing pieces of text from filename_a and filename_b
@@ -146,6 +156,7 @@ def pieces(filename_a, filename_b):
         pieces_a_b.append((piece_a, pieces_b[index]))
 
     return pieces_a_b
+
 
 def pieces_lines(filename_a, filename_b):
     """
@@ -161,12 +172,14 @@ def pieces_lines(filename_a, filename_b):
 
     return pieces_a_b
 
+
 def get_pieces_and_write(filename_a, filename_b, out_dir, out_file):
     pieces_a_b = pieces(filename_a, filename_b)
     # convert list to string
     pieces_a_b_string = "({})".format(pieces_a_b)
 
     file_writer.FileWriter.create_file(out_dir, out_file, pieces_a_b_string)
+
 
 def get_pieces_lines_and_write(filename_a, filename_b, out_dir, out_file):
     pieces_a_b_string = pieces_lines(filename_a, filename_b)
