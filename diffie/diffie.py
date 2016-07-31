@@ -18,9 +18,6 @@ def difflib_ndiff(filename_a, filename_b):
     https://docs.python.org/3/library/difflib.html
     """
 
-    lines_a = []
-    lines_b = []
-
     with open(filename_a) as file_a:
         lines_a = file_a.readlines()
 
