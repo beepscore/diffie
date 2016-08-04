@@ -175,10 +175,10 @@ def get_pieces_and_write(filename_a, filename_b, out_dir, out_file):
     # convert list to string
     pieces_a_b_string = "({})".format(pieces_a_b)
 
-    file_writer.FileWriter.create_file(out_dir, out_file, pieces_a_b_string)
+    file_writer.create_file(out_dir, out_file, pieces_a_b_string)
 
 
 def get_pieces_lines_and_write(filename_a, filename_b, out_dir, out_file):
     pieces_a_b_string = pieces_lines(filename_a, filename_b)
 
-    file_writer.FileWriter.create_file(out_dir, out_file, pieces_a_b_string)
+    file_writer.create_file(out_dir, out_file, pieces_a_b_string)

@@ -10,8 +10,7 @@ Return differences between two files.
 ## run main.py
     cd <project root directory>
     source venv/bin/activate
-    python3 diffie/main.py
-
+    python3 main.py
 
 
 ## Unit tests
@@ -24,7 +23,7 @@ Works on OS X. On Windows may work with Cygwin, I don't know.
 
     cd <project root directory>
     source venv/bin/activate
-    ./bin/run_tests
+    bin/run_tests
 
 ### python command
 
