@@ -1,7 +1,7 @@
 # diffie
 
 # Purpose
-  Return differences between two files.
+Return differences between two files.
 
 # References
 
