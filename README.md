@@ -5,13 +5,21 @@ Return differences between two files.
 
 # References
 
+## searcher
+https://github.com/beepscore/searcher.git
+
 # Results
 
 ## run main.py
+### macOS
     cd <project root directory>
     source venv/bin/activate
     python3 main.py
 
+### Windows
+    cd <project root directory>
+    venv\Scripts\activate.bat
+    python3 main.py
 
 ## Unit tests
 To run tests, open terminal shell.  
@@ -19,12 +27,12 @@ cd to project directory. Run tests via python command or bash script.
 
 ### Bash script
 Runs all test modules.  
-Works on OS X. On Windows may work with Cygwin, I don't know.
+Works on macOS. On Windows may work with Cygwin, I don't know.
 
     cd <project root directory>
     source venv/bin/activate
     bin/run_tests
-
+    
 ### python command
 
     cd <project root directory>
