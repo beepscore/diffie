@@ -117,4 +117,5 @@ crashlytics.properties
 crashlytics-build.properties
 
 # program data files
+data
 results.txt
