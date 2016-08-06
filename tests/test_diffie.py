@@ -13,7 +13,7 @@ class TestDiffie(unittest.TestCase):
         pass
 
     def test_string_from_file(self):
-        actual = diffie.string_from_file('data/a.txt')
+        actual = diffie.string_from_file('data/input/test/a.txt')
         expected = """foo bar bas period x y z a
 bar dog cat fly period a b c d3
 foo
@@ -24,7 +24,7 @@ now you see moog now you don't
         self.assertEqual(actual, expected)
 
     def test_sequence_matcher_opcodes_no_equal(self):
-        actual = diffie.sequence_matcher_opcodes_no_equal('data/b.txt', 'data/c.txt')
+        actual = diffie.sequence_matcher_opcodes_no_equal('data/input/test/b.txt', 'data/input/test/c.txt')
         self.assertEqual(len(actual), 6)
         expected = ["insert    a[7:7] --> b[7:8]       '' --> ' '",
                     "replace   a[8:9] --> b[9:10]      'i' --> 'e'",
@@ -51,15 +51,15 @@ now you see moog now you don't
         self.assertEqual(diffie.end_index(12, 'abcdefghijklmnopqrstuvwxyz'), 25)
 
     def test_opcode_indexes_a(self):
-        actual = diffie.opcode_indexes_a('data/a.txt', 'data/b.txt')
+        actual = diffie.opcode_indexes_a('data/input/test/a.txt', 'data/input/test/b.txt')
         self.assertEqual(actual, [(7, 7), (21, 21), (22, 24), (31, 35), (38, 38), (43, 47), (48, 49), (76, 80), (114, 115), (117, 118)])
 
     def test_opcode_indexes_b(self):
-        actual = diffie.opcode_indexes_b('data/a.txt', 'data/b.txt')
+        actual = diffie.opcode_indexes_b('data/input/test/a.txt', 'data/input/test/b.txt')
         self.assertEqual(actual, [(7, 10), (24, 26), (27, 27), (34, 34), (37, 39), (44, 45), (46, 49), (76, 76), (110, 112), (114, 115)])
 
     def test_pieces_string_a(self):
-        actual = diffie.pieces_string_a('data/a.txt', 'data/b.txt')
+        actual = diffie.pieces_string_a('data/input/test/a.txt', 'data/input/test/b.txt')
         expected = ['foo bar bas period x y',
                     'r bas period x y z a\nbar dog c',
                     ' bas period x y z a\nbar dog cat ',
@@ -73,7 +73,7 @@ now you see moog now you don't
         self.assertEqual(actual, expected)
 
     def test_pieces_string_b(self):
-        actual = diffie.pieces_string_b('data/a.txt', 'data/b.txt')
+        actual = diffie.pieces_string_b('data/input/test/a.txt', 'data/input/test/b.txt')
         expected = ['foo barbie bas period x z',
                     'e bas period x z y a\nbar catty f',
                     'as period x z y a\nbar catty fl',
@@ -87,7 +87,7 @@ now you see moog now you don't
         self.assertEqual(actual, expected)
 
     def test_pieces(self):
-        actual = diffie.pieces('data/a.txt', 'data/b.txt')
+        actual = diffie.pieces('data/input/test/a.txt', 'data/input/test/b.txt')
         expected = [('foo bar bas period x y', 'foo barbie bas period x z'),
                     ('r bas period x y z a\nbar dog c', 'e bas period x z y a\nbar catty f'),
                     (' bas period x y z a\nbar dog cat ', 'as period x z y a\nbar catty fl'),
