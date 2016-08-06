@@ -117,5 +117,9 @@ crashlytics.properties
 crashlytics-build.properties
 
 # program data files
-data
-results.txt
+data/input/*
+# unignore data/input/test. Use one line without *, one with *
+!data/input/test/
+!data/input/test/*
+data/input/test/.DS_Store
+data/output/
