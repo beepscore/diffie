@@ -18,9 +18,6 @@ for pair in pieces:
     print(pair[1])
     print()
 
-# diffie.get_pieces_and_write('data/input/a.txt', 'data/input/ac.txt', 'data/output', 'results.txt')
-# diffie.get_pieces_lines_and_write('data/input/a.txt', 'data/input/ac.txt', 'data/output', 'results.txt')
-
 ignored_filename_patterns = ['\A\.$', '\A\.\.$', '\A\.DS_Store$']
 ignored_regex_objects = expression_helper.regex_objects_from_patterns(ignored_filename_patterns)
 
