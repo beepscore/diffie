@@ -205,6 +205,8 @@ def get_diffs_write(in_dir, out_dir, out_file):
     print("file_pairs {}".format(file_pairs))
 
     file_writer.create_file(out_dir, out_file, None)
+    out_file = os.path.join(out_dir, out_file)
+    # print("out_file {}".format(out_file))
 
     for key in file_pairs:
         print("key {}, value {}".format(key, file_pairs[key]))
@@ -219,7 +221,6 @@ def get_diffs_write(in_dir, out_dir, out_file):
         pieces_a_b_string = pieces_lines(filename_a, filename_b)
         print("pieces_a_b_string {}".format(pieces_a_b_string))
 
-        out_file = os.path.join(out_dir, out_file)
         with open(out_file, "a") as myfile:
             myfile.write(pieces_a_b_string)
 
