@@ -16,5 +16,6 @@ python3 --version
 # http://stackoverflow.com/questions/11536764/attempted-relative-import-in-non-package-even-with-init-py
 python3 -m tests.test_diffie
 python3 -m tests.test_file_helper
+python3 -m tests.test_file_pairer
 python3 -m tests.test_file_writer
 

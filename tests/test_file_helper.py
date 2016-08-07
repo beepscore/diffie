@@ -51,7 +51,9 @@ class TestFileHelper(unittest.TestCase):
 
         # Don't care about element order, so compare results using set instead of list
         expected = {'a.txt',
+                    'ac.txt',
                     'b.txt',
+                    'bc.txt',
                     'c.txt',
                     }
 
