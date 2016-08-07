@@ -170,7 +170,12 @@ def pieces_lines(filename_a, filename_b):
     return pieces_a_b
 
 
-def get_pieces_and_write(filename_a, filename_b, out_dir, out_file):
+def get_pieces_and_write(filename_a, filename_b, in_dir, out_dir, out_file):
+
+    if (in_dir is not None) and (in_dir is not ""):
+        filename_a = os.path.join(in_dir, filename_a)
+        filename_b = os.path.join(in_dir, filename_b)
+
     pieces_a_b = pieces(filename_a, filename_b)
     # convert list to string
     pieces_a_b_string = "({})".format(pieces_a_b)
@@ -178,7 +183,12 @@ def get_pieces_and_write(filename_a, filename_b, out_dir, out_file):
     file_writer.create_file(out_dir, out_file, pieces_a_b_string)
 
 
-def get_pieces_lines_and_write(filename_a, filename_b, out_dir, out_file):
+def get_pieces_lines_and_write(filename_a, filename_b, in_dir, out_dir, out_file):
+
+    if (in_dir is not None) and (in_dir != ""):
+        filename_a = os.path.join(in_dir, filename_a)
+        filename_b = os.path.join(in_dir, filename_b)
+
     pieces_a_b_string = pieces_lines(filename_a, filename_b)
 
     file_writer.create_file(out_dir, out_file, pieces_a_b_string)
