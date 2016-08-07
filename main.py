@@ -7,15 +7,15 @@ import pprint
 # if __name__ == '__main__':
 
 print('difflib_ndiff')
-pprint.pprint(difflib_ndiff('data/a.txt', 'data/b.txt'))
+pprint.pprint(difflib_ndiff('data/input/a.txt', 'data/input/ac.txt'))
 
 print('pieces')
-pieces = pieces('data/a.txt', 'data/b.txt')
+pieces = pieces('data/input/a.txt', 'data/input/ac.txt')
 for pair in pieces:
     print(pair[0])
     print(pair[1])
     print()
 
-# get_pieces_and_write('data/a.txt', 'data/b.txt', 'data/output', 'results.txt')
+# get_pieces_and_write('data/input/a.txt', 'data/input/ac.txt', 'data/output', 'results.txt')
 
-get_pieces_lines_and_write('data/a.txt', 'data/b.txt', 'data/output', 'results.txt')
+get_pieces_lines_and_write('data/input/a.txt', 'data/input/ac.txt', 'data/output', 'results.txt')
