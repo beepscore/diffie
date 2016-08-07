@@ -202,14 +202,13 @@ def get_diffs_write(in_dir, out_dir, out_file):
     ignored_regex_objects = expression_helper.regex_objects_from_patterns(ignored_filename_patterns)
 
     file_pairs = file_pairer.file_pairs("./data/input", ignored_regex_objects)
-    print("file_pairs {}".format(file_pairs))
 
     file_writer.create_file(out_dir, out_file, None)
     out_file = os.path.join(out_dir, out_file)
     # print("out_file {}".format(out_file))
 
     for key in file_pairs:
-        print("key {}, value {}".format(key, file_pairs[key]))
+        # print("key {}, value {}".format(key, file_pairs[key]))
 
         filename_a = key
         filename_b = file_pairs[key]
@@ -219,7 +218,7 @@ def get_diffs_write(in_dir, out_dir, out_file):
             filename_b = os.path.join(in_dir, filename_b)
 
         pieces_a_b_string = pieces_lines(filename_a, filename_b)
-        print("pieces_a_b_string {}".format(pieces_a_b_string))
+        # print("pieces_a_b_string {}".format(pieces_a_b_string))
 
         with open(out_file, "a") as myfile:
             myfile.write(pieces_a_b_string)
