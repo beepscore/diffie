@@ -48,11 +48,13 @@ def create_file(dirname, filename, content):
     Creates file at path and writes content
     Path includes directory name and file name.
     Creates directory if it doesn't exist.
+    :param content: content to write. If None, doesn't write, closes file.
     """
     abs_file_path = absolute_file_path(dirname, filename)
     create_directory(dirname)
     # https://docs.python.org/3.3/tutorial/inputoutput.html
     f = open(abs_file_path, 'w')
-    f.write(content)
+    if content is not None:
+        f.write(content)
     f.close()
 
