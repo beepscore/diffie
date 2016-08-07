@@ -123,3 +123,4 @@ data/input/*
 !data/input/test/*
 data/input/test/.DS_Store
 data/output/
+results.txt
