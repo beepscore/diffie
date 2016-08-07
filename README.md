@@ -14,7 +14,7 @@ https://github.com/beepscore/searcher.git
 ### macOS
     cd <project root directory>
     source venv/bin/activate
-    python3 main.py
+    python3 -m main
 
 ### Windows
     cd <project root directory>
