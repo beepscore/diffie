@@ -221,6 +221,8 @@ def get_diffs_write(in_dir, out_dir, out_file):
         # print("pieces_a_b_string {}".format(pieces_a_b_string))
 
         with open(out_file, "a") as myfile:
+            myfile.write("files {} {}\n".format(filename_a, filename_b))
             myfile.write(pieces_a_b_string)
+            myfile.write("\n")
 
     myfile.close()
