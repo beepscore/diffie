@@ -2,6 +2,7 @@
 
 import os
 from diffie import expression_helper
+from typing import List
 
 
 """ Utility methods for working with files and directories
@@ -65,7 +66,7 @@ def directories_in_dir_recursive(search_dir, ignored_regex_objects):
     return dir_paths
 
 
-def files_in_dir(search_dir, ignored_regex_objects):
+def files_in_dir(search_dir, ignored_regex_objects: List) -> List:
     """
     Searches search_dir for files
 
