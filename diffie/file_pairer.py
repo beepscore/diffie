@@ -14,12 +14,14 @@ https://ssscripting.wordpress.com/2009/03/03/python-recursive-directory-walker/
 def file_pairs(search_dir, ignored_regex_objects):
     """
     Searches search_dir for files with similar names
+    Matches file names that differ by an ending "c". e.g. "a.txt": "ac.txt"
 
     Ignores symlinks. Doesn't ignore alias.
     http://apple.stackexchange.com/questions/2991/whats-the-difference-between-alias-and-link
 
-    param ignored_regex_objects contains regular expression objects compiled from patterns
-    return list of pairs in search_dir, relative to search_dir
+    :param ignored_regex_objects: contains regular expression objects compiled from patterns
+    :param search_dir: typically data/input
+    :return: dictionary of pairs in search_dir, relative to search_dir
     """
 
     files_in_dir = file_helper.files_in_dir(search_dir, ignored_regex_objects)

@@ -34,9 +34,9 @@ def directories_in_dir_recursive(search_dir, ignored_regex_objects):
     Ignores symlinks. Doesn't ignore alias.
     http://apple.stackexchange.com/questions/2991/whats-the-difference-between-alias-and-link
 
-    param search_dir is the directory to search
-    param ignored_regex_objects contains regular expression objects compiled from patterns
-    return list of un-ignored directories in search_dir and subdirectories
+    :param search_dir: is the directory to search
+    :param ignored_regex_objects: contains regular expression objects compiled from patterns
+    :return list of un-ignored directories in search_dir and subdirectories
     """
 
     dir_paths = [search_dir]
@@ -73,8 +73,8 @@ def files_in_dir(search_dir, ignored_regex_objects: List) -> List:
     Ignores symlinks. Doesn't ignore alias.
     http://apple.stackexchange.com/questions/2991/whats-the-difference-between-alias-and-link
 
-    param ignored_regex_objects contains regular expression objects compiled from patterns
-    return list of un-ignored files in search_dir, relative to search_dir
+    :param ignored_regex_objects: contains regular expression objects compiled from patterns
+    :return list of un-ignored files in search_dir, relative to search_dir
     """
 
     file_paths = []
