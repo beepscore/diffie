@@ -75,16 +75,28 @@ now you see moog now you don't
 
     def test_pieces_string_b(self):
         actual = diffie.pieces_string_b('data/input/test/a.txt', 'data/input/test/b.txt')
-        expected = ['foo barbie bas period x z',
-                    'e bas period x z y a\nbar catty f',
-                    'as period x z y a\nbar catty fl',
-                    'od x z y a\nbar catty fly colon',
-                    'x z y a\nbar catty fly colon a b ',
-                    '\nbar catty fly colon a b c d3\nf',
-                    'ar catty fly colon a b c d3\nfoo\nf',
-                    'o\nfud spaghetti cheese\nging fu',
-                    'ab\nnow you see floop now you don',
-                    "ow you see floop now you don't"]
+        # print(actual)
+        # # expected = ['foo barbie bas period x z',
+        # #             'e bas period x z y a\nbar catty f',
+        # #             'as period x z y a\nbar catty fl',
+        # #             'od x z y a\nbar catty fly colon',
+        # #             'x z y a\nbar catty fly colon a b ',
+        # #             '\nbar catty fly colon a b c d3\nf',
+        # #             'ar catty fly colon a b c d3\nfoo\nf',
+        # #             'o\nfud spaghetti cheese\nging fu',
+        # #             'ab\nnow you see floop now you don',
+        # #             "ow you see floop now you don't"]
+
+        expected = ['foo barbie bas period x z y a\n',
+                    'barbie bas period x z y a\nbar catty fly co',
+                    'bie bas period x z y a\nbar catty fly col',
+                    ' period x z y a\nbar catty fly colon a b ',
+                    'riod x z y a\nbar catty fly colon a b c d3\n',
+                    'z y a\nbar catty fly colon a b c d3\nfoo\nfu',
+                    'y a\nbar catty fly colon a b c d3\nfoo\nfud sp',
+                    'd3\nfoo\nfud spaghetti cheese\nging fudooga',
+                    "udoogab\nnow you see floop now you don't",
+                    "gab\nnow you see floop now you don't"]
         self.assertEqual(actual, expected)
 
     def test_pieces(self):
