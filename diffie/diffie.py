@@ -207,7 +207,10 @@ def get_diffs_write(in_dir, out_dir, out_file):
     out_file = os.path.join(out_dir, out_file)
     print("out_file {}".format(out_file))
 
-    for key in file_pairs:
+    # dictionary is not sorted, and order can vary. Sort keys to iterate files in alphabetical order.
+    keys_sorted = sorted(file_pairs.keys())
+
+    for key in keys_sorted:
         # print("key {}, value {}".format(key, file_pairs[key]))
 
         filename_a = key
