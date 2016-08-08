@@ -36,10 +36,10 @@ now you see moog now you don't
 
     def test_start_index(self):
         self.assertEqual(diffie.start_index(0), 0)
-        self.assertEqual(diffie.start_index(14), 0)
-        self.assertEqual(diffie.start_index(15), 0)
-        self.assertEqual(diffie.start_index(16), 1)
-        self.assertEqual(diffie.start_index(17), 2)
+        self.assertEqual(diffie.start_index(19), 0)
+        self.assertEqual(diffie.start_index(20), 0)
+        self.assertEqual(diffie.start_index(21), 1)
+        self.assertEqual(diffie.start_index(22), 2)
 
     def test_end_index(self):
         self.assertEqual(diffie.end_index(0, 'abcdefghijklmnopqrstuvwxyz'), 20)
