@@ -42,13 +42,13 @@ now you see moog now you don't
         self.assertEqual(diffie.start_index(17), 2)
 
     def test_end_index(self):
-        self.assertEqual(diffie.end_index(0, 'abcdefghijklmnopqrstuvwxyz'), 15)
-        self.assertEqual(diffie.end_index(1, 'abcdefghijklmnopqrstuvwxyz'), 16)
+        self.assertEqual(diffie.end_index(0, 'abcdefghijklmnopqrstuvwxyz'), 20)
+        self.assertEqual(diffie.end_index(1, 'abcdefghijklmnopqrstuvwxyz'), 21)
 
-        self.assertEqual(diffie.end_index(9, 'abcdefghijklmnopqrstuvwxyz'), 24)
-        self.assertEqual(diffie.end_index(10, 'abcdefghijklmnopqrstuvwxyz'), 25)
-        self.assertEqual(diffie.end_index(11, 'abcdefghijklmnopqrstuvwxyz'), 25)
-        self.assertEqual(diffie.end_index(12, 'abcdefghijklmnopqrstuvwxyz'), 25)
+        self.assertEqual(diffie.end_index(4, 'abcdefghijklmnopqrstuvwxyz'), 24)
+        self.assertEqual(diffie.end_index(5, 'abcdefghijklmnopqrstuvwxyz'), 25)
+        self.assertEqual(diffie.end_index(6, 'abcdefghijklmnopqrstuvwxyz'), 25)
+        self.assertEqual(diffie.end_index(7, 'abcdefghijklmnopqrstuvwxyz'), 25)
 
     def test_opcode_indexes_a(self):
         actual = diffie.opcode_indexes_a('data/input/test/a.txt', 'data/input/test/b.txt')
