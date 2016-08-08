@@ -89,16 +89,17 @@ now you see moog now you don't
 
     def test_pieces(self):
         actual = diffie.pieces('data/input/test/a.txt', 'data/input/test/b.txt')
-        expected = [('foo bar bas period x y', 'foo barbie bas period x z'),
-                    ('r bas period x y z a\nbar dog c', 'e bas period x z y a\nbar catty f'),
-                    (' bas period x y z a\nbar dog cat ', 'as period x z y a\nbar catty fl'),
-                    ('od x y z a\nbar dog cat fly period ', 'od x z y a\nbar catty fly colon'),
-                    ('z a\nbar dog cat fly period a b', 'x z y a\nbar catty fly colon a b '),
-                    ('ar dog cat fly period a b c d3\nfoo', '\nbar catty fly colon a b c d3\nf'),
-                    ('g cat fly period a b c d3\nfoo\nf', 'ar catty fly colon a b c d3\nfoo\nf'),
-                    ('o\nfud spaghetti wif cheese\nging fu', 'o\nfud spaghetti cheese\nging fu'),
-                    ('ab\nnow you see moog now you don', 'ab\nnow you see floop now you don'),
-                    ("now you see moog now you don't", "ow you see floop now you don't")]
+        expected = [('foo bar bas period x y z a\n', 'foo barbie bas period x z y a\n'),
+         ('oo bar bas period x y z a\nbar dog cat fl', 'barbie bas period x z y a\nbar catty fly co'),
+         ('o bar bas period x y z a\nbar dog cat fly p', 'bie bas period x z y a\nbar catty fly col'),
+         (' period x y z a\nbar dog cat fly period a b c', ' period x z y a\nbar catty fly colon a b '),
+         (' x y z a\nbar dog cat fly period a b c d3', 'riod x z y a\nbar catty fly colon a b c d3\n'),
+         ('z a\nbar dog cat fly period a b c d3\nfoo\nfud ', 'z y a\nbar catty fly colon a b c d3\nfoo\nfu'),
+         ('ar dog cat fly period a b c d3\nfoo\nfud sp', 'y a\nbar catty fly colon a b c d3\nfoo\nfud sp'),
+         ('d3\nfoo\nfud spaghetti wif cheese\nging fudooga', 'd3\nfoo\nfud spaghetti cheese\nging fudooga'),
+         ("udoogab\nnow you see moog now you don't", "udoogab\nnow you see floop now you don't"),
+         ("ogab\nnow you see moog now you don't", "gab\nnow you see floop now you don't")]
+
         self.assertEqual(actual, expected)
 
 if __name__ == "__main__":
