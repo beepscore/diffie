@@ -168,6 +168,7 @@ def pieces_lines(filename_a, filename_b):
     for index, piece_a in enumerate(pieces_a):
         pieces_a_b += piece_a + os.linesep
         pieces_a_b += pieces_b[index] + os.linesep
+        pieces_a_b += os.linesep
 
     return pieces_a_b
 
