@@ -60,16 +60,17 @@ now you see moog now you don't
 
     def test_pieces_string_a(self):
         actual = diffie.pieces_string_a('data/input/test/a.txt', 'data/input/test/b.txt')
-        expected = ['foo bar bas period x y',
-                    'r bas period x y z a\nbar dog c',
-                    ' bas period x y z a\nbar dog cat ',
-                    'od x y z a\nbar dog cat fly period ',
-                    'z a\nbar dog cat fly period a b',
-                    'ar dog cat fly period a b c d3\nfoo',
-                    'g cat fly period a b c d3\nfoo\nf',
-                    'o\nfud spaghetti wif cheese\nging fu',
-                    'ab\nnow you see moog now you don',
-                    "now you see moog now you don't"]
+        expected = ['foo bar bas period x y z a\n',
+                    'oo bar bas period x y z a\nbar dog cat fl',
+                    'o bar bas period x y z a\nbar dog cat fly p',
+                    ' period x y z a\nbar dog cat fly period a b c',
+                    ' x y z a\nbar dog cat fly period a b c d3',
+                    'z a\nbar dog cat fly period a b c d3\nfoo\nfud ',
+                    'ar dog cat fly period a b c d3\nfoo\nfud sp',
+                    'd3\nfoo\nfud spaghetti wif cheese\nging fudooga',
+                    "udoogab\nnow you see moog now you don't",
+                    "ogab\nnow you see moog now you don't"]
+
         self.assertEqual(actual, expected)
 
     def test_pieces_string_b(self):
