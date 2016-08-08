@@ -23,20 +23,20 @@ class TestFileWriter(unittest.TestCase):
         expected = "httpbeepscore.comhubcape"
         self.assertEqual(expected, actual)
 
-    # This test is not ideal because it depends upon developer machine
-    def test_absolute_dir_path(self):
-        test_dirname = "../websearcher_junk_ok_to_delete"
-        actual = file_writer.absolute_dir_path(test_dirname)
-        self.assertEqual('/Users/stevebaker/Documents/projects/pythonProjects/websearcher_junk_ok_to_delete',
-                         actual, '')
-
-    # This test is not ideal because it depends upon developer machine
-    def test_absolute_file_path(self):
-        test_dirname = "../websearcher_junk_ok_to_delete"
-        test_filename = "junk.txt"
-        actual = file_writer.absolute_file_path(test_dirname, test_filename)
-        self.assertEqual('/Users/stevebaker/Documents/projects/pythonProjects/websearcher_junk_ok_to_delete/junk.txt',
-                         actual, '')
+    # # This test is not ideal because it depends upon developer machine
+    # def test_absolute_dir_path(self):
+    #     test_dirname = "../websearcher_junk_ok_to_delete"
+    #     actual = file_writer.absolute_dir_path(test_dirname)
+    #     self.assertEqual('/Users/stevebaker/Documents/projects/pythonProjects/websearcher_junk_ok_to_delete',
+    #                      actual, '')
+    #
+    # # This test is not ideal because it depends upon developer machine
+    # def test_absolute_file_path(self):
+    #     test_dirname = "../websearcher_junk_ok_to_delete"
+    #     test_filename = "junk.txt"
+    #     actual = file_writer.absolute_file_path(test_dirname, test_filename)
+    #     self.assertEqual('/Users/stevebaker/Documents/projects/pythonProjects/websearcher_junk_ok_to_delete/junk.txt',
+    #                      actual, '')
 
     def test_create_directory(self):
         test_dirname = "../websearcher_junk_ok_to_delete"
