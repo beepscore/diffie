@@ -3,8 +3,6 @@
 import unittest
 import os
 
-# tried putting tests in a "test" directory at same level as websearcher
-# relative import didn't work
 from diffie import file_writer
 
 
