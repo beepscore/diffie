@@ -10,6 +10,13 @@ https://github.com/beepscore/searcher.git
 
 # Results
 
+## input
+In data/input put one or more pairs of similarly named files to diff.
+App will diff files whose names differ by an ending "c". e.g. "a.txt": "ac.txt"
+
+## output
+App writes results to data/output/results.txt
+
 ## run main.py
 ### macOS
     cd <project root directory>
