@@ -94,7 +94,7 @@ def opcode_indexes_b(filename_a, filename_b):
 
 
 def start_index(opcode_start_index):
-    number_of_characters_before = 20
+    number_of_characters_before = 25
     proposed_start = opcode_start_index - number_of_characters_before
     if proposed_start < 0:
         return 0
@@ -103,7 +103,7 @@ def start_index(opcode_start_index):
 
 
 def end_index(opcode_start_index, string):
-    number_of_characters_after = 20
+    number_of_characters_after = 25
     proposed_end = opcode_start_index + number_of_characters_after
     if proposed_end > len(string) - 1:
         return len(string) - 1
