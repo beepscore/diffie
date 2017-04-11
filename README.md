@@ -31,7 +31,17 @@ App writes results to data/output/results.txt
 ## Unit tests
 To run tests, open terminal shell.  
 cd to project directory. Run tests via python command or bash script.
+    cd <project root directory>
+    
+### python command
+This command lists and tests all modules
 
+    python3 -m unittest discover -s tests/
+
+Alternatively, can supply test module names as args
+
+    python3 -m unittest tests.test_diffie tests.test_file_writer
+    
 ### Bash script
 Runs all test modules.  
 Works on macOS. On Windows may work with Cygwin, I don't know.
@@ -39,11 +49,6 @@ Works on macOS. On Windows may work with Cygwin, I don't know.
     cd <project root directory>
     source venv/bin/activate
     bin/run_tests
-    
-### python command
-
-    cd <project root directory>
-    python3 -m unittest tests.test_diffie tests.test_file_writer
 
 ---
 
