@@ -1,7 +1,7 @@
 # diffie
 
 # Purpose
-Return differences between two files.
+Python project to return differences between two files.
 
 # References
 
@@ -30,19 +30,20 @@ App writes results to data/output/results.txt
 
 ## Unit tests
 To run tests, open terminal shell.  
-cd to project directory. Run tests via python command or bash script.
+cd to project directory. Run tests via command line or PyCharm test configuration.
     cd <project root directory>
     
-### python command
+### command line
+#### python command
 This command lists and tests all modules
 
-    python3 -m unittest discover -s tests/
+    python3 -m unittest discover
 
 Alternatively, can supply test module names as args
 
     python3 -m unittest tests.test_diffie tests.test_file_writer
     
-### Bash script
+#### Bash script
 Runs all test modules.  
 Works on macOS. On Windows may work with Cygwin, I don't know.
 
@@ -50,61 +51,43 @@ Works on macOS. On Windows may work with Cygwin, I don't know.
     source venv/bin/activate
     bin/run_tests
 
----
+### PyCharm test configuration
+.idea files aren't in source control, so describe configuration setup here.
+Add from Defaults/Python tests/unittests
 
-## Appendix virtual environment venv
+#### Target / Path
 
-The project uses a virtual environment.
+    .../diffie/tests
 
-https://docs.python.org/3/library/venv.html
+#### Python interpreter
+Python 3.6.1 (~/anaconda/envs/beepscore/bin/python)
 
-This can hold a python version and pip installed packages such as "requests".
+#### Working directory
+Setting this fixes "no such file or directory error" when running tests in this project.
+Many projects don't need this setting.
 
-https://github.com/kennethreitz/requests
+    .../diffie
+    
+## Appendix Anaconda
 
-### Install virtual environment in directory named "venv"
+The project uses an Anaconda environment.
 
-    $ cd <project root directory>
-    $ pyvenv venv
+### Activate anaconda environment
 
-### Before activating virtual environment
+    beepscore02:diffie stevebaker$ source activate beepscore
 
-On my machine, active python is 2.7.12
+Notice command prompt shows anaconda environment is active
 
-    ➜  diffie git:(master) ✗ which python
-    /usr/local/bin/python
-    ➜  diffie git:(master) python --version
-    Python 2.7.12
+    (beepscore) beepscore02:diffie stevebaker$
 
-On my machine, to use python3 must specify python3
+    (beepscore) beepscore02:diffie stevebaker$ which python
+    /Users/stevebaker/anaconda/envs/beepscore/bin/python
 
-    ➜  diffie git:(master) which python3
-    /usr/local/bin/python3
+    (beepscore) beepscore02:diffie stevebaker$ python --version
+    Python 3.6.2 :: Continuum Analytics, Inc.
 
-### Activate virtual environment
-
-    ➜  diffie git:(master) source ./venv/bin/activate
-
-### Now active python is in venv and is version 3.5.1
-
-Notice command prompt shows venv is active
-
-    (venv) ➜  diffie git:(master) which python
-    /Users/stevebaker/Documents/projects/pythonProjects/diffie/venv/bin/python
-    (venv) ➜  diffie git:(master) python --version
-    Python 3.5.2
 
 ### Deactivate virtual environment
-In shell run deactivate
-    (venv) ➜  diffie git:(master) ✗ deactivate
+In shell run source deactivate
 
-## Appendix upgrade pip3
-With virtualenv active
-
-    pip3 install --upgrade pip
-
-    Successfully uninstalled pip-8.1.1
-    Successfully installed pip-8.1.2
-
-Installed to project venv
-
+    (beepscore) beepscore02:diffie stevebaker$ source deactivate
