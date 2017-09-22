@@ -45,8 +45,7 @@ def directories_in_dir_recursive(search_dir, ignored_regex_objects):
 
         for dirname in dirnames:
 
-            if expression_helper.is_string_matched_in_regular_expression_objects(dirpath,
-                                                                                                  ignored_regex_objects):
+            if expression_helper.is_string_matched_in_regular_expression_objects(dirpath, ignored_regex_objects):
                 # ignore subdirectories of ignored directory
                 continue
 
@@ -55,8 +54,7 @@ def directories_in_dir_recursive(search_dir, ignored_regex_objects):
                 # http://stackoverflow.com/questions/15718006/check-if-directory-is-symlink
                 continue
 
-            if expression_helper.is_string_matched_in_regular_expression_objects(dirname,
-                                                                                                  ignored_regex_objects):
+            if expression_helper.is_string_matched_in_regular_expression_objects(dirname, ignored_regex_objects):
                 # ignore this directory
                 continue
 
@@ -92,8 +90,7 @@ def files_in_dir(search_dir, ignored_regex_objects: List) -> List:
             # http://stackoverflow.com/questions/15718006/check-if-directory-is-symlink
             continue
 
-        if expression_helper.is_string_matched_in_regular_expression_objects(filename,
-                                                                                              ignored_regex_objects):
+        if expression_helper.is_string_matched_in_regular_expression_objects(filename, ignored_regex_objects):
             # ignore this file
             continue
 
