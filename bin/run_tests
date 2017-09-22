@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # activate anaconda environment "beepscore"
-source activate beepscore
+# source activate beepscore
 
 # In terminal show that venv is active by showing python path and version python 3.x
 # NOTE: If virtual environment was not active before script started, after script finishes apparently venv is deactivated
@@ -12,8 +12,8 @@ python3 --version
 # python3 -m unittest discover confused test_arg_reader.
 # if using -m then don't append extension .py
 # http://stackoverflow.com/questions/11536764/attempted-relative-import-in-non-package-even-with-init-py
-python3 -m tests.test_diffie
-python3 -m tests.test_file_helper
-python3 -m tests.test_file_pairer
-python3 -m tests.test_file_writer
+python3 -m test_diffie
+python3 -m test_file_helper
+python3 -m test_file_pairer
+python3 -m test_file_writer
 
