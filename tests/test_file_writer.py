@@ -9,7 +9,7 @@ from diffie import file_writer
 class TestFileWriter(unittest.TestCase):
 
     def setUp(self):
-        self.output_dir_slash = '../data/output/'
+        self.output_dir_slash = '../../'
 
     def test_filename_from_url_root(self):
         actual = file_writer.filename_from_url("http://www.beepscore.com")
