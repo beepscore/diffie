@@ -57,7 +57,10 @@ Add from Defaults/Python tests/unittests
 
 #### Target / Path
 
-    .../diffie/tests
+    tests/
+
+#### pattern
+can leave this blank
 
 #### Python interpreter
 Python 3.6.1 (~/anaconda/envs/beepscore/bin/python)
@@ -68,6 +71,9 @@ Many projects don't need this setting.
 
     .../diffie
     
+select add content roots to python path
+select add source roots to python path
+
 ## Appendix Anaconda
 
 The project uses an Anaconda environment.
