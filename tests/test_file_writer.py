@@ -9,7 +9,7 @@ from diffie import file_writer
 class TestFileWriter(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.output_dir_slash = '../data/output/'
 
     def test_filename_from_url_root(self):
         actual = file_writer.filename_from_url("http://www.beepscore.com")
@@ -37,12 +37,12 @@ class TestFileWriter(unittest.TestCase):
     #                      actual, '')
 
     def test_create_directory(self):
-        test_dirname = "../websearcher_junk_ok_to_delete"
+        test_dirname = self.output_dir_slash + "diffie_junk_ok_to_delete"
         file_writer.create_directory(test_dirname)
         self.assertTrue(os.path.isdir(test_dirname), '')
 
     def test_create_file(self):
-        test_dirname = "../junk"
+        test_dirname = self.output_dir_slash + "junk"
         test_filename = "junk.txt"
         test_content = "junk_text"
 
