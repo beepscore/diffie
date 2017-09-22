@@ -10,7 +10,7 @@ from diffie import diffie
 class TestDiffie(unittest.TestCase):
 
     def setUp(self):
-        self.input_dir_slash = '../data/input/test/'
+        self.input_dir_slash = './data/input/test/'
 
     def test_string_from_file(self):
         actual = diffie.string_from_file(self.input_dir_slash + 'a.txt')

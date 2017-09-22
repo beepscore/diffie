@@ -8,7 +8,7 @@ from diffie import expression_helper
 class TestFileHelper(unittest.TestCase):
 
     def setUp(self):
-        self.data_dir = '../data'
+        self.data_dir = './data'
 
     def test_directories_in_dir_recursive_dont_ignore(self):
 

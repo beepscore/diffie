@@ -8,7 +8,7 @@ from diffie import expression_helper
 class TestFilePairer(unittest.TestCase):
 
     def setUp(self):
-        self.input_dir_slash = '../data/input/test/'
+        self.input_dir_slash = './data/input/test/'
 
     def test_file_pairs(self):
 
