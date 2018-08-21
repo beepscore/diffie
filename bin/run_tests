@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # activate anaconda environment "beepscore"
-# source activate beepscore
+# conda activate beepscore
 
 # In terminal show that venv is active by showing python path and version python 3.x
 # NOTE: If virtual environment was not active before script started, after script finishes apparently venv is deactivated
