@@ -80,7 +80,7 @@ The project uses an Anaconda environment.
 
 ### Activate anaconda environment
 
-    beepscore02:diffie stevebaker$ source activate beepscore
+    beepscore02:diffie stevebaker$ conda activate beepscore
 
 Notice command prompt shows anaconda environment is active
 
@@ -93,7 +93,7 @@ Notice command prompt shows anaconda environment is active
     Python 3.6.2 :: Continuum Analytics, Inc.
 
 
-### Deactivate virtual environment
-In shell run source deactivate
+### Deactivate conda environment
+In shell run conda deactivate
 
-    (beepscore) beepscore02:diffie stevebaker$ source deactivate
+    (beepscore) beepscore02:diffie stevebaker$ conda deactivate
